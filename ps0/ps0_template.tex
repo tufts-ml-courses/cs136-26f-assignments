@@ -1,0 +1,176 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+
+%%% Write out problem statements in purple, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[C]{CS 136 - 2025f - PS0 Submission}
+
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+~\\ %% add vertical space
+{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I consulted the following human, textbook, or AI resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+By turning this document in, I attest that I have followed the 
+\href{https://www.cs.tufts.edu/cs/136/2025f/index.html#collaboration}{[CS 136 Collaboration Policy]}. All solutions represent my own work. No solution text in this document was directly provided by other humans or artificial agents. 
+
+\tableofcontents
+
+\newpage
+\officialdirections{
+\subsection*{Problem 1}
+Suppose 10\% of a given population has COVID-19 and they all test. The COVID-19 antigen test has 80\% accuracy when taken by someone with COVID-19 (i.e. 80\% chance of coming back positive) and is 99\% accurate when taken by someone without COVID-19 (i.e. 99\% chance of coming back negative). If you get a positive antigen test result, what is the probability you have COVID-19?
+}
+
+\subsection{1: Solution}
+
+\emph{TODO YOUR SOLUTION HERE.}
+
+
+\newpage
+\officialdirections{
+\subsection*{2: Problem Statement}
+Suppose you flip a fair coin 10 times (probability of heads is 0.5). 
+
+Let $X_i = 1$ if the $i$th flip **and** the $i+1$th flip were heads, and 0 otherwise (for $i=1,\dots,9$). Thus each $X_i$ is tracking whether a "back-to-back heads" happened at a particular point in the 10-flip sequence.
+}
+
+\officialdirections{\subsection*{2a: Problem Statement}
+What is $E[X_i]$, the expected value of $X_i$?
+}
+
+\subsection{2a: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{\subsection*{2b: Problem Statement}
+Are $X_i$ and $X_{i+1}$ independent? Show your answer mathematically. \emph{Note: the answer does not depend on the value of i.}
+}
+
+\subsection{2b: Solution}
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{\subsection*{2c: Problem Statement}
+Let $X = \sum_{i=1}^9 X_i$. We could describe $X$ as the ``total number of back-to-back heads observed" (although this could be a slightly confusing description, because 3 heads in a row are being counted as 2 different back-to-back heads by this equation). 
+}
+
+\subsection{2c: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{
+\subsection*{3: Problem Statement}
+Let $X,Y,C$ be binary random variables (i.e. they can each take a value of 0 or 1). Consider the following joint distribution:
+
+$$
+\def\arraystretch{1.3}
+\begin{array}{|c|c|c|c|}
+\hline
+x & y & c & p(x,y,c) \\
+\hline
+0 & 0 & 0 & 0.15 \\
+0 & 1 & 0 & 0.1 \\
+1 & 0 & 0 & 0.15 \\
+1 & 1 & 0 & 0.1 \\
+0 & 0 & 1 & 0.1 \\
+0 & 1 & 1 & 0.05 \\
+1 & 0 & 1 & 0.2 \\
+1 & 1 & 1 & 0.15 \\
+\hline
+\end{array}
+$$
+}
+
+\officialdirections{\subsection*{3a: Problem Statement}
+What is $P(C=1)$?
+}
+
+\subsection{3a: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{\subsection*{3b: Problem Statement}
+What is $P(C=0|Y=0)$?
+}
+
+\subsection{3b: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{\subsection*{3c: Problem Statement}
+Which of the following statements is true? You don't need to provide math showing the other 3 are false; just show your work for the true one.
+\begin{itemize}
+\item $X$ and $Y$ are independent.
+\item $X$ and $Y$ are conditionally independent given $C$.
+\item $X$ and $Y$ are conditionally independent given $C = 0$.
+\item $X$ and $Y$ are conditionally independent given $C = 1$.
+\end{itemize}
+}
+
+\subsection{3c: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{
+\subsection*{4: Problem Statement}
+Let $X$ be the result of a fair, six-sided die roll, so $X$ has equal probability of taking any integer value 1 to 6.
+
+What is the variance $Var(X)$ of $X$? 
+}
+
+\subsection{4: Solution}
+TODO YOUR SOLUTION HERE
+
+\end{document}
