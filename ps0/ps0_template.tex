@@ -60,6 +60,25 @@ By turning this document in, I attest that I have followed the
 
 \tableofcontents
 
+\subsection{Reference}
+Here is an example of using \LaTeX's \texttt{align} environment. It aligns the \& and the \&\& to be in the same horizontal position on every line. Feel free to use this as a template for writing your own multi-line equations.
+\begin{align*}
+  ax^2 + bx + c &= 0 \\
+  x^2 + \frac{b}{a}x + \frac{c}{a} &= 0
+    \qquad && \text{divide through by $a \neq 0$} \\
+  x^2 + \frac{b}{a}x &= -\frac{c}{a}
+    && \text{isolate the constant} \\
+  x^2 + \frac{b}{a}x + \left(\frac{b}{2a}\right)^2
+    &= -\frac{c}{a} + \frac{b^2}{4a^2}
+    && \text{add $(b/2a)^2$ to both sides} \\
+  \left(x + \frac{b}{2a}\right)^2 &= \frac{b^2 - 4ac}{4a^2}
+    && \text{left side is now a perfect square} \\
+  x + \frac{b}{2a} &= \pm\frac{\sqrt{b^2 - 4ac}}{2a}
+    && \text{take square roots, keeping both signs} \\
+  x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+    && \text{solve for $x$}
+\end{align*}
+
 \newpage
 \officialdirections{
 \subsection*{Problem 1}
