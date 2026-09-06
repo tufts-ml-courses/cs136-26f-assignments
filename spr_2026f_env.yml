@@ -16,3 +16,5 @@ dependencies:
   - pandas=2.3
   ## Machine Learning
   - scikit-learn=1.7
+  - pytorch-cpu=2.12
+  - torchvision
