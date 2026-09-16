@@ -1,0 +1,168 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+
+%%% Write out problem statements in purple, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[C]{CS 136 - 2026f - PS1 Submission}
+
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+~\\ %% add vertical space
+{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I consulted the following human, textbook, or AI resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+By turning this document in, I attest that I have followed the 
+\href{https://www.cs.tufts.edu/cs/136/2026f/index.html#collaboration}{[CS 136 Collaboration Policy]}. All solutions represent my own work. No solution text in this document was directly provided by other humans or artificial agents. 
+
+\tableofcontents
+
+\newpage
+\officialdirections{
+\subsection*{Problem 1}
+Let $\mu \in (0.0, 1.0)$ be a Beta-distributed random variable: $p(\mu) = \text{Beta}(\mu|\alpha, \beta)$.
+
+Show that $\mathbb{E}[ \mu ] = \frac{\alpha}{\alpha + \beta}$.
+}
+
+\subsection{1: Solution}
+
+\emph{TODO YOUR SOLUTION HERE.}
+
+
+\newpage
+\officialdirections{
+\subsection*{2: Problem Statement}
+You observe a sequence of binary random variables $X_1, \ldots, X_N$. Let $S$ be the number of positive outcomes, $S = \sum_{i=1}^N X_i$. We assume the following model, as we did in class:
+\begin{align*}
+p(\mu) &= \textnormal{Beta}(\mu|\alpha, \beta)\\
+p(x_i|\mu) &= \textnormal{Bern}(x_i|\mu)
+\end{align*}
+You can assume that the hyperparameters $\alpha$ and $\beta$ have already been set. 
+}
+
+\officialdirections{\subsection*{2a: Problem Statement}
+Show that the posterior predictive can be written:
+\begin{equation*}
+p(x_*|x_1,\ldots,x_N) = E_{p(\mu|x_1,\ldots,x_N)}[p(x_*|\mu)]
+\end{equation*}
+}
+
+\subsection{2a: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{\subsection*{2b: Problem Statement}
+Show that after seeing the results of the $N$ training trials, the probability of the next trial $X_*$ being positive is given by:
+\begin{equation*}
+p(X_* = 1|x_1,\ldots,x_N) = \frac{\alpha + s}{\alpha + \beta + N}
+\end{equation*}
+}
+
+\subsection{2b: Solution}
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{\subsection*{2c: Problem Statement}
+Show that the probability of a positive result under the posterior predictive (i.e. your answer to 2b) can be decomposed as a weighted average of prior mean and observation mean:
+\begin{equation*}
+\frac{\alpha + s}{\alpha + \beta + N} = q \cdot E_{p(\mu)}[\mu] + (1-q) \cdot \frac{s}{N}
+\end{equation*}
+Find an expression for $q$ that always satisfies $0 \leq q \leq 1$. What happens to $q$ as $N \to \infty$, and how does that relate to consistency?
+}
+
+\subsection{2c: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{
+\subsection*{3: Problem Statement}
+Now let's consider a more complex model: a sequence of \textbf{words} $X_1, \ldots, X_N$ that come from a finite vocabulary of size $V$. We assume the following model, as we did in class:
+\begin{align*}
+p(\mu) &= \textnormal{Dir}(\mu|\alpha, \ldots, \alpha)\\
+p(x_i|\mu) &= \textnormal{Cat}(x_i|\mu)
+\end{align*}
+\vspace{-10mm}
+}
+\officialdirections{\subsection*{3a: Problem Statement}
+Show that after seeing the $N$ training words, the probability of the next word $X_*$ being vocabulary word $v^*$ is given by:
+\begin{equation}
+p(X_* = v_*|x_1,\ldots,x_N) = \frac{n_{v_*} + \alpha}{N + V\alpha}
+\end{equation}
+Where $n_{v_*}$ is the number of occurrences of word $v_*$ in the training dataset.
+}
+
+\subsection{3a: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{\subsection*{3b: Problem Statement}
+In CA1, we'll want to compute the \textbf{marginal likelihood} or \textbf{evidence} of the observed training data which, unlike the likelihoods, integrates out the parameter $\mu$.
+\begin{align*}
+p(x_1,\ldots,x_N) &= \int p(\mu, x_1, \ldots, x_N) d\mu\\
+&= \int p(\mu)p( x_1, \ldots, x_N|\mu) d\mu
+\end{align*}
+
+
+Show that the evidence has the following closed-form expression:
+
+\begin{equation*}
+p(x_1,\ldots, x_N) = \frac
+	{ \Gamma(V \alpha)      \prod_{v=1}^V \Gamma( n_v + \alpha ) }
+	{ \Gamma(N + V \alpha ) \prod_{v=1}^V \Gamma(\alpha)         }
+\end{equation*}
+}
+
+\subsection{3b: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\end{document}
