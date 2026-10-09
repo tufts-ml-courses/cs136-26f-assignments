@@ -1,0 +1,159 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+
+%%% Write out problem statements in purple, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[C]{CS 136 - 2026f - PS2 Submission}
+
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+~\\ %% add vertical space
+{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I consulted the following human, textbook, or AI resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+By turning this document in, I attest that I have followed the 
+\href{https://www.cs.tufts.edu/cs/136/2026f/index.html#collaboration}{[CS 136 Collaboration Policy]}. All solutions represent my own work. No solution text in this document was directly provided by other humans or artificial agents. 
+
+\tableofcontents
+
+\newpage
+\officialdirections{
+\subsection*{1a: Problem Statement}
+Suppose you are told that a vector random variable $x \in \mathbb{R}^D$ has a PDF that obeys:
+
+\begin{equation*}
+p(x) \propto \exp\left\{-\frac{1}{2} x^T A x + b^T x\right\}
+\end{equation*}
+
+where $A$ is a symmetric positive definite matrix and $b$ is any vector.
+
+Show that $x$ has a multivariate Gaussian distribution, and find its mean $\mu$ and covariance matrix $\Sigma$ as a function of $A$ and $b$.
+}
+
+\subsection{1a: Solution}
+
+\emph{TODO YOUR SOLUTION HERE.}
+
+
+\newpage
+\officialdirections{
+\subsection*{1b: Problem Statement}
+Consider the model
+\begin{align*}
+p(w) &= N(w|m_0,S_0)\\
+p(t|w) &= N(t|w,\Sigma)
+\end{align*}
+Where $S_0,\Sigma$ are positive definite matrices and $m_0$ is the prior mean. Show that the posterior $p(w|t)$ is a multivariate normal, and find its mean and covariance matrix.
+}
+
+\subsection{1b: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{\subsection*{1c: Problem Statement}
+Consider the model
+\begin{align*}
+p(w) &= N(w|0,\alpha^{-1} I)\\
+p(t_{1:N}|w,x_{1:N}) &= N(t_{1:N}|\Phi_{1:N} w, \beta^{-1} I)
+\end{align*}
+Where $\alpha,\beta > 0$ are prior and likelihood precisions, $\Phi_{1:N}$ is the $N \times D$ matrix of feature transforms, and $t_{1:N}$ is a $N$-length vector of target values. Show that the posterior $p(w|t_{1:N},x_{1:N})$ is a multivariate normal, and show that its mean $m_N$ and covariance matrix $S_N$ are given by:
+\begin{align*}
+S_N &= (\alpha I + \beta \Phi_{1:N}^T \Phi_{1:N})^{-1}\\
+m_N &= \beta S_N \Phi_{1:N}^T t_{1:N} = \left(\frac{\alpha}{\beta} I + \Phi_{1:N}^T \Phi_{1:N}\right)^{-1} \Phi_{1:N}^T t_{1:N}
+\end{align*}
+}
+
+\subsection{1c: Solution}
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{\subsection*{2: Problem Statement}
+Consider the model
+\begin{align*}
+p(w) &= N(w|0,\alpha^{-1} I)\\
+p(t_{1:N}|w,x_{1:N}) &= N(t_{1:N}|\Phi_{1:N} w, \beta^{-1} I)
+\end{align*}
+
+Show that the posterior predictive distribution $p(t_*|t_{1:N},x_{1:N},x_*)$ is a (univariate) normal distribution, with mean $\phi(x_*)^Tm_N$ (where $m_N$ is taken from 1c) and variance
+\begin{equation*}
+\frac{1}{\beta} + \phi(x_*)^T S_N \phi(x_*)
+\end{equation*}
+
+(where $S_N$ is also taken from 1c). You can use the result from 1c and any relevant result from previous homeworks.
+}
+
+\subsection{2: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{
+\subsection*{3: Problem Statement}
+Consider the model
+\begin{align*}
+p(z) &= \textnormal{Bernoulli}(z|0.5)\\
+p(x|Z=0) &= N(x|\mu_0,\Sigma)\\
+p(x|Z=1) &= N(x|\mu_1,\Sigma)
+\end{align*}
+
+This is called a Gaussian mixture model because the data $x$ comes from one of two Gaussians. In this case, assume we only observe $x$, and we do not know whether its corresponding $z$ is 0 or 1 (i.e. we don't know which of the two Gaussians it came from). However, assume that we do know the means of each Gaussian $\mu_0,\mu_1$ and the shared covariance matrix $\Sigma$. Unit 4 will focus on this type of model.
+
+Using Bayes rule, show that the posterior $p(z|x)$ is given by:
+\begin{equation*}
+p(Z=1|x) = \frac{1}{1 + e^{a^T x + b}}
+\end{equation*}
+For some vector $a$ and some constant $b$. Find $a$ and $b$. 
+}
+
+\subsection{3: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\end{document}
