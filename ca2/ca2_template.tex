@@ -1,0 +1,151 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{graphicx}       % figure graphics
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,allcolors=black,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+
+%%% Write out problem statements in purple, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[C]{\ifnum\value{page}=1 Tufts CS 136 - 2026f - CA2 Submission \else \fi}
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~\\ %% add vertical space
+{\Large{\bf Student Name: TODO}}
+
+~\\ %% add vertical space
+{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I consulted the following human, textbook, or AI resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+By turning this document in, I attest that I have followed the 
+\href{https://www.cs.tufts.edu/cs/136/2026f/index.html#collaboration}{[CS 136 Collaboration Policy]}. All solutions represent my own work. No solution text in this document was directly provided by other humans or artificial agents. 
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\newpage
+
+\subsection{1a}
+\officialdirections{
+Given a dataset of size $N$, how do we score the model's predictions? Translate the provided starter code for the \texttt{score} function of the MAP estimator into a mathematical expression involving our probabilistic model. Provide a function in terms of parameters $\hat{w}_{\text{MAP}}, \beta$ and dataset $\{x_n, t_n \}_{n=1}^N$. Your final expression can be in terms of well-known density functions like the univariate or multivariate normal density $N(\ldots)$.
+}
+
+TODO YOUR SOLUTION HERE
+
+\subsection{1b}
+\officialdirections{Fix and then execute \texttt{run\_demo\_MAP.py}. For each model order, report the $\beta$ that does best in terms of validation-set likelihood, along with its validation score.}
+
+\begin{table}[!h]
+\begin{tabular}{r r r}
+model order & best $\beta$ for order & valid. score
+\\
+1 & TODO & TODO 
+\\
+4 & TODO & TODO 
+\\
+7 & TODO & TODO
+\end{tabular}
+\end{table}
+
+\subsection{1c}
+\officialdirections{Explain why different $\beta$ values might be preferred by different model orders. Hint: Inspect the visualizations produced from your 1b experiments.
+}
+
+TODO YOUR SOLUTION HERE
+
+\subsection{1d}
+
+\officialdirections{Compare the visuals produced by \texttt{run\_demo\_PPE.py} to those from the MAP estimator. What do you notice about the width of the 2-stddev intervals of the predictions at $x$ values far from the train data? Why does this suggest PPE might generalize better than MAP?}
+
+TODO YOUR SOLUTION HERE
+\newpage 
+
+\subsection{2a}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\thefigure}{2a}
+ \begin{figure}[!h]
+     \centering
+     \includegraphics[width=0.95\textwidth]{example-image-a.pdf}
+     \label{fig:2a}
+\caption{TODO YOUR CAPTION HERE. 
+}%endcaption
+ \end{figure}
+
+\newpage 
+
+\subsection{2b}
+\renewcommand{\thefigure}{2b}
+ \begin{figure}[!h]
+     \centering
+     \includegraphics[width=0.6\textwidth]{example-image-b.pdf}
+     \label{fig:2b}
+\caption{
+TODO YOUR CAPTION HERE
+}%endcaption
+ \end{figure}
+
+\newpage 
+
+\subsection{3a}
+\renewcommand{\thefigure}{3a}
+ \begin{figure}[!h]
+     \centering
+     \includegraphics[width=0.95\textwidth]{example-image-c.pdf}
+     \label{fig:3a}
+     \caption{
+TODO YOUR CAPTION HERE
+}%endcaption
+ \end{figure}
+
+\newpage 
+
+\subsection{3b}
+\renewcommand{\thefigure}{3b}
+ \begin{figure}[!h]
+     \centering
+     \includegraphics[width=0.6\textwidth]{example-image.pdf}
+     \label{fig:3b}
+\caption{
+TODO YOUR CAPTION HERE
+}%endcaption
+ \end{figure}
+ 
+\end{document}
