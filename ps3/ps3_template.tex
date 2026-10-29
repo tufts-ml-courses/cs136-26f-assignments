@@ -1,0 +1,154 @@
+\documentclass[10pt]{article}
+
+%%% Doc layout
+\usepackage{fullpage} 
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{microtype}      % microtypography
+\usepackage{parskip}
+\usepackage{times}
+
+%% Hyperlinks always black, no weird boxes
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,pdfborder={0 0 0}]{hyperref}
+
+%%% Math typesetting
+\usepackage{amsmath,amssymb}
+
+%%% Write out problem statements in purple, solutions in black
+\usepackage{xcolor}
+\newcommand{\officialdirections}[1]{{\color{purple} #1}}
+
+%%% Avoid automatic section numbers (we'll provide our own)
+\setcounter{secnumdepth}{0}
+
+%% --------------
+%% Header
+%% --------------
+\usepackage{fancyhdr}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[C]{CS 136 - 2026f - PS3 Submission}
+
+\fancyfoot[C]{\thepage} % page number
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+
+%% --------------
+%% Begin Document
+%% --------------
+\begin{document}
+
+~\\ %% add vertical space
+
+{\Large{\bf Student Name: TODO}}
+
+~\\ %% add vertical space
+{\bf Collaboration Statement:}
+
+Total hours spent: TODO
+
+I consulted the following human, textbook, or AI resources:
+\begin{itemize}
+\item TODO
+\item TODO
+\item $\ldots$	
+\end{itemize}
+
+By turning this document in, I attest that I have followed the 
+\href{https://www.cs.tufts.edu/cs/136/2026f/index.html#collaboration}{[CS 136 Collaboration Policy]}. All solutions represent my own work. No solution text in this document was directly provided by other humans or artificial agents. 
+
+\tableofcontents
+
+\newpage
+\officialdirections{
+\subsection*{1a: Problem Statement}
+Show that $D_{KL}(p(x) \lVert p(x)) = 0$, i.e. the divergence between any distribution and itself is 0.
+}
+
+\subsection{1a: Solution}
+
+\emph{TODO YOUR SOLUTION HERE.}
+
+
+\newpage
+\officialdirections{
+\subsection*{1b: Problem Statement}
+Jensen's inequality is a very important property that states: given a random variable $A$ and a convex (aka ``bowl-shaped") function $f$, 
+$$E\big[f(A)\big] \geq f\big(E[A]\big).$$
+Note that the negative log, $f(a) = -\log(a)$ is a convex function.
+
+Use Jensen's inequality to prove that a KL divergence cannot be negative, i.e. $D_{KL}(q(x) \lVert p(x)) \geq 0$.
+}
+
+\subsection{1b: Solution}
+TODO YOUR SOLUTION HERE
+
+
+\newpage
+\officialdirections{\subsection*{2a: Problem Statement}
+Suppose $X$ follows a univariate normal distribution with mean $\mu$ and variance $\sigma^2$. Show that the entropy  of $X$ can be computed $E_{p(x)}[-\log p(x)] = \frac{1}{2}\left(1+\log 2 \pi \sigma^2\right)$. This result demonstrates that the entropy does not depend on $\mu$, and can be easily computed in closed form.
+}
+
+\subsection{2a: Solution}
+TODO YOUR SOLUTION HERE
+
+
+
+\newpage
+\officialdirections{\subsection*{2b: Problem Statement}
+Suppose both $p(x)$ and $q(x)$ factorize into the product of distributions on individual components, i.e. 
+\begin{align*}
+p(x) &= \prod_{d=1}^D p(x_d)\\
+q(x) &= \prod_{d=1}^D q(x_d)
+\end{align*}
+
+Show that $D_{KL}(q(x) \lVert p(x)) = \sum_{d=1}^D D_{KL}(q(x_d) \lVert p(x_d))$.
+}
+
+\subsection{2b: Solution}
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{
+\subsection*{3: Problem Statement}
+If $\theta$ is constrained we cannot optimize a Gaussian variational factor over $\theta$, because that would put density over invalid values. To solve this, we define a transformation $T(\theta)$ which maps the constrained space (set of valid $\theta$ values) to all real numbers, and define $\tilde{\theta} = T(\theta)$ or equivalently, $\theta = T^{-1}(\tilde{\theta})$.
+
+We optimize a Gaussian distribution $\tilde{q}_\gamma(\tilde{\theta})$ over $\tilde{\theta}$, which induces a non-Gaussian distribution on $\theta = T^{-1}(\tilde{\theta})$. We call this induced distribution $q_\gamma(\theta)$; it is the distribution that the ELBO is defined in terms of.
+
+If $\theta$ has more than one dimension, but the transform $\theta = T^{-1}(\tilde{\theta})$ is applied to each dimension independently (e.g. you take the exp of each component of $\tilde{\theta}$ to make every component positive) the change in density is given by
+\begin{equation*}
+q_\gamma\left(\theta\right) =\tilde{q}_\gamma(\tilde{\theta}) \cdot \prod_{d=1}^D  \left|\frac{d \theta_d}{d \tilde{\theta}_d}\right|^{-1}
+\end{equation*}
+Your task: explain how to estimate the entropy $E_{q_\gamma(\theta)}[-\log q_\gamma(\theta)]$ of $\theta$ in this setting. \emph{The assignment html page contains additional details.}
+}
+
+\subsection{3: Solution}
+
+TODO YOUR SOLUTION HERE
+
+\newpage
+\officialdirections{
+\subsection*{4: Problem Statement}
+Now we consider a model with local latent variables, as discussed in lecture 14:
+
+\begin{itemize}
+\item The local latent variables $z$ come from a fixed prior distribution $p(z)$
+\item The observations $x$ are drawn from a likelihood function $p_\theta(x|z)$ with parameters $\theta$.
+\end{itemize}
+We define a variational factor $q_{\gamma_n}(z_n)$ to approximate the local latent variable posterior for each data point $p_\theta(z_n|x_n)$. Note that each variational factor has a \emph{different} set of parameters $\gamma_n$.
+
+Show that, under this model, you can decompose the sum of each data point's ELBO into
+\begin{equation*}
+\sum_{n=1}^N \mathbb{E}_{q_{\gamma_n}(z_n)}\left[\log \frac{p(z_n)p_\theta(x_n|z_n)}{q_{\gamma_n}(z_n)}\right] = \log p_\theta(x_{1:N}) - \sum_{n=1}^N D_{KL}(q_{\gamma_n}(z_n) \lVert p_\theta(z_n|x_n))
+\end{equation*}
+
+\emph{The assignment html page contains additional notes/hints.}
+}
+
+\subsection{4: Solution}
+
+TODO YOUR SOLUTION HERE
+
+
+\end{document}
